@@ -1,0 +1,131 @@
+
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+.unactive{
+    color: grey !important; 
+    opacity: 0.7 !important;
+}
+.wrapper-board{
+    display: flex;
+    justify-content: space-between; 
+}
+.opacity{
+    opacity: 0.8;
+}
+.Board{
+    font-weight: 500;
+    position: relative; 
+    flex:1;
+    height: calc(100vh - 80px);
+    border-left: 2px solid rgba(0, 0, 0, 0.2); 
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2); 
+}
+.board-item{
+    margin-top: 10px;
+}
+.Pictures{ 
+    width: 200px; 
+    font-weight: 500;
+}
+.Pictures > div{
+    padding: 20px;
+}
+.details{
+    position: absolute;
+    top: 25px;
+    left: 10px;
+    text-align: left;
+    font-size: 14px;
+    z-index: -1
+}
+.details > div{
+    margin-top: 10px;
+}
+.nav-bar{
+    position: relative;
+    height: 50px;
+    width: 100%; 
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+.nav-bar .nav-bar__item{
+    background: red;
+    padding: 6px 12px;
+    border: 1px solid hsla(0, 0%, 19%, 0.2);
+    text-decoration: none; 
+    color: white;
+    cursor: pointer;
+}
+.nav-bar .nav-bar__item:hover{
+    color: rgb(70, 70, 70);
+}
+.notification{
+    position:absolute;
+    right: 0;
+    border: 1px solid rgba(0, 0, 0, 0.192);
+    line-height: 50px;
+    padding-inline: 10px;
+    transform: translateX(0%);
+    opacity: 0;
+    animation: in-left 300ms ease-in-out;
+}
+
+@keyframes in-left {
+    0%{
+        opacity: 0;
+        transform: translateX(100%);
+
+    }100%{
+        opacity:1;
+        transform: translateX(0%);
+
+    }
+}
+.change-info{
+    position: absolute;
+    bottom: 0; 
+    height: 130px;
+    width: 100%;
+    border-top: 2px solid rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+ 
+p{
+    margin: 5px;
+}
+.dragElement{
+    margin: 0 auto;
+    width: 80px;
+    height: 80px;
+    border: 1px solid rgba(0, 0, 0,.5)
+}
+.item-board:hover{
+    background: rgba(0, 0, 0, 0.1);
+}
+.wrap-button,
+.wrap-paragraph{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 20px;
+    margin-top: 10px;
+}
+.button-delete{
+    background: rgba(255, 0, 0, 1);
+    height: 45px;
+    width: 100px;
+    border: 1px solid rgba(48, 48, 48, 0.2);
+    border-radius: 5px; 
+    cursor: pointer;
+    color: #fff;
+    margin-top: 10px;
+}
+.button-delete:hover{
+    opacity: 0.7; 
+}

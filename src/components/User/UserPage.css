@@ -1,0 +1,15 @@
+.wrapper-view-consumers{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 4px;
+    flex-direction:column;
+    font-weight: bold;
+    margin-top: 20px;
+    
+}
+button{
+    line-height: 24px;
+    font-weight: 600;
+    padding-inline: 20px;
+}
