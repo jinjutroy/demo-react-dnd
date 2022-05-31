@@ -118,20 +118,20 @@ function DragDrop() {
         console.error("There was an error!", error);
       });
   };
-  const saveToData = () => {
+  const saveToData = (config) => { 
     let temp = config;
-    if (!config) return;
+    if (temp.length === 0) return;
     const requestOptions = {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        message: temp.props.message || "",
-        text: temp.props.text || "",
-        type: temp.component === "ElementParagraph" ? "paragraph" : "button",
+        message: temp.message ,
+        text: temp.text || "",
+        type:  temp.type,
       }),
     };
     fetch(
-      "https://api-demo-nextjs.herokuapp.com/api/data/" + config.id,
+      "https://api-demo-nextjs.herokuapp.com/api/data/" + temp.id,
       requestOptions
     )
       .then((response) => response.json())
@@ -189,8 +189,7 @@ function DragDrop() {
       setText({});
     }
   };
-  const updateText = (e) => {
-    e.target.text = "";
+  const updateText = (e) => { 
     let temp = config;
     setText({
       id: temp.id,
@@ -204,8 +203,14 @@ function DragDrop() {
       },
     };
     setConfig(obj);
+    board.forEach((element,index) => { 
+      if(element.id === Number(obj.id)) {
+        board[index].text = e.target.value;
+      }
+    });
   };
   const updateAlertMessage = (e) => {
+    
     let temp = config;
     let obj = {
       ...temp,
@@ -214,9 +219,15 @@ function DragDrop() {
         message: e.target.value,
       },
     };
+    board.forEach((element,index) => { 
+      if(element.id === Number(obj.id)) {
+        board[index].message = e.target.value;
+      }
+    });
+    // board[index].text = e.target.value; 
     setConfig(obj);
   };
-
+  
   const deleteElement = async (e) => {
     dispatch(deleteElementR(config));
     deleteFromData(config.id);
@@ -225,8 +236,10 @@ function DragDrop() {
     setParagraphClick(false);
   };
 
-  const saveChange = () => {
-    saveToData();
+  const saveChange = () => { 
+    board.forEach(element => { 
+      saveToData(element);
+    }); 
   };
   const handlerUndo = () => {
     if (!isUndo) {
